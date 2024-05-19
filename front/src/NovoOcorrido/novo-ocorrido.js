@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import "./novo-ocorrido.css";
 
-
-function Ocorridos() {
-  const [ocorridos, setOcorridos] = useState([]);
-
+function CriarOcorrido() {
   const [id, setId] = useState('');
   const [descricao, setDescricao] = useState('');
   const [tipo, setTipo] = useState('');
@@ -16,19 +14,31 @@ function Ocorridos() {
   const [genero, setGenero] = useState('');
   const [sexualidade, setSexualidade] = useState('');
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/api/ocorridos')
-      .then(response => {
-        setOcorridos(response.data.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the data!', error);
-      });
-  }, []);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:3001/api/ocorridos', { id, cidade, descricao });
+      console.log('Ocirrido added:', response.data);
+    } catch (error) {
+      console.error('There was an error adding the user!', error);
+    }
+  };
 
   return (
-    <div className="Ocorridos">
-      <form onSubmit={useEffect}>
+    <div className="NovoOcorrido">
+      <h1>Novo Ocorrido</h1>
+      <form onSubmit={handleSubmit}>
+
+        <div>
+          <div>Id</div>
+          <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        </div>
+
+        <div>
+          <div>Descrição</div>
+          <input type="text" value={descricao} onChange={(e) => setDescricao(e.target.value)} />
+        </div>
+
         <div>
           <label>Tipo</label> 
           <br></br>
@@ -70,7 +80,7 @@ function Ocorridos() {
               <option value="amarelo">Amarelo</option>
           </select>
         </div>
-
+        
         <div>
           <div>Identidade de Gênero</div>
           <input type="text" value={genero} onChange={(e) => setGenero(e.target.value)} />
@@ -80,17 +90,20 @@ function Ocorridos() {
           <div>Orientação Sexual</div>
           <input type="text" value={sexualidade} onChange={(e) => setSexualidade(e.target.value)} />
         </div>
-        <button type="submit">Pesquisar</button>
+
+
+        
+
+        
+
+        <button type="submit">Adicionar Ocorrido</button>
       </form>
 
-      <h1>Resultados</h1>
-      <ul>
-        {ocorridos.map((item) => (
-          <li key={item.id}>{item.cidade}: {item.descricao}</li>
-        ))}
-      </ul>
+      
+
+
     </div>
   );
 }
 
-export default Ocorridos;
+export default CriarOcorrido;

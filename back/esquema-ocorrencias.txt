@@ -1,0 +1,13 @@
+CREATE TABLE "ocorrido" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"descricao"	TEXT NOT NULL,
+	"tipo"	INTEGER NOT NULL,
+	"municipio"	TEXT NOT NULL,
+	"estado"	TEXT NOT NULL,
+	"data"	TEXT NOT NULL,
+	"idade"	INTEGER,
+	"raca"	TEXT,
+	"orientacao_sexual"	TEXT,
+	"identidade_genero"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+)
