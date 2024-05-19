@@ -5,7 +5,6 @@ import axios from 'axios';
 function Ocorridos() {
   const [ocorridos, setOcorridos] = useState([]);
 
-  const [id, setId] = useState('');
   const [descricao, setDescricao] = useState('');
   const [tipo, setTipo] = useState('');
   const [cidade, setCidade] = useState('');

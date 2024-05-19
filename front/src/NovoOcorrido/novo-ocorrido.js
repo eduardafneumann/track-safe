@@ -3,21 +3,20 @@ import axios from 'axios';
 import "./novo-ocorrido.css";
 
 function CriarOcorrido() {
-  const [id, setId] = useState('');
   const [descricao, setDescricao] = useState('');
   const [tipo, setTipo] = useState('');
-  const [cidade, setCidade] = useState('');
+  const [municipio, setMunicipio] = useState('');
   const [estado, setEstado] = useState('');
   const [data, setData] = useState('');
   const [idade, setIdade] = useState('');
   const [raca, setRaca] = useState('');
-  const [genero, setGenero] = useState('');
-  const [sexualidade, setSexualidade] = useState('');
+  const [identidade_genero, setGenero] = useState('');
+  const [orientacao_sexual, setSexualidade] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/ocorridos', { id, cidade, descricao });
+      const response = await axios.post('http://localhost:3001/api/ocorridos', {descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero});
       console.log('Ocirrido added:', response.data);
     } catch (error) {
       console.error('There was an error adding the user!', error);
@@ -30,11 +29,6 @@ function CriarOcorrido() {
       <form onSubmit={handleSubmit}>
 
         <div>
-          <div>Id</div>
-          <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
-        </div>
-
-        <div>
           <div>Descrição</div>
           <input type="text" value={descricao} onChange={(e) => setDescricao(e.target.value)} />
         </div>
@@ -42,7 +36,7 @@ function CriarOcorrido() {
         <div>
           <label>Tipo</label> 
           <br></br>
-          <select value={tipo} onChange={(e) => setDescricao(e.target.value)}>
+          <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
               <option value="fisica">Física</option>
               <option value="sexual">Sexual</option>
               <option value="psicologica">Psicológica</option>
@@ -51,7 +45,7 @@ function CriarOcorrido() {
 
         <div>
           <div>Cidade</div>
-          <input type="text" value={cidade} onChange={(e) => setCidade(e.target.value)} />
+          <input type="text" value={municipio} onChange={(e) => setMunicipio(e.target.value)} />
         </div>
 
         <div>
@@ -83,18 +77,16 @@ function CriarOcorrido() {
         
         <div>
           <div>Identidade de Gênero</div>
-          <input type="text" value={genero} onChange={(e) => setGenero(e.target.value)} />
+          <input type="text" value={identidade_genero} onChange={(e) => setGenero(e.target.value)} />
         </div>
 
         <div>
           <div>Orientação Sexual</div>
-          <input type="text" value={sexualidade} onChange={(e) => setSexualidade(e.target.value)} />
+          <input type="text" value={orientacao_sexual} onChange={(e) => setSexualidade(e.target.value)} />
         </div>
 
 
-        
-
-        
+      
 
         <button type="submit">Adicionar Ocorrido</button>
       </form>
