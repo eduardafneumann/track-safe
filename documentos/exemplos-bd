@@ -1,0 +1,54 @@
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Sed scelerisque ante dui', 'Física', 'São Carlos', 'SP', '2024-05-01', 41, 'Amarela', 'Assexual', NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Pellentesque habitant morbi tristique', 'Física', 'São Paulo', 'SP', '2024-04-03', 34, 'Preta', 'Homossexual', 'Transgênero');
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Vivamus gravida ipsum ut metus', 'Psicológica', 'Itaguaí', 'RJ', '2024-04-02', NULL, NULL, NULL, NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Nulla in elit nec eros mattis elementum', 'Psicológica', 'São Carlos', 'SP', '2024-04-01', 23, 'Parda', 'Heterossexual', NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Sed vulputate sed diam vitae tincidunt', 'Física', 'Japeri', 'RJ', '2024-05-01', 28, 'Branca', NULL, 'Gênero-flúido');
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Suspendisse auctor elit id lectus aliquam', 'Psicológica', 'Belford Roxo', 'RJ', '2024-04-04', 30, 'Indígena', NULL, NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Sed maximus ligula nec ultricies bibendum', 'Psicológica', 'São Carlos', 'SP', '2024-03-02', NULL, NULL, NULL, NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Cras a commodo odio. Sed at quam eros.', 'Sexual', 'Brasília', 'DF', '2023-12-03', 19, 'Parda', 'Homossexual', NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Cras maximus tortor feugiat', 'Física', 'Americana', 'SP', '2023-12-02', 55, 'Branca', NULL, NULL);
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Pellentesque malesuada gravida mattis.', 'Psicológica', 'Campinas', 'SP', '2023-11-04', 27, 'Branca', 'Bissexual', 'Cisgênero');
+
+INSERT INTO ocorridos
+(descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero)
+VALUES
+('Phasellus aliquam lorem nulla', 'Sexual', 'Curaçá', 'BA', '2024-03-05', NULL, NULL, NULL, NULL);

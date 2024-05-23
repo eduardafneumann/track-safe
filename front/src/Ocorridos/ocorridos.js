@@ -16,16 +16,16 @@ function Ocorridos() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/api/procurar-ocorridos', {
+      const response = await axios.get('http://localhost:3001/api/ocorridos', {
         params: { 
           tipo: tipo || undefined,
           municipio: municipio || undefined,
-          estado: estado,
+          estado: estado || undefined,
           data: data || undefined,
           idade: idade || undefined,
           raca: raca || undefined,
-          genero: genero || undefined,
-          sexualidade: sexualidade || undefined
+          identidade_genero: genero || undefined,
+          orientacao_sexual: sexualidade || undefined
         }
       });
       setOcorridos(response.data.data);
@@ -35,8 +35,9 @@ function Ocorridos() {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
-    console.log(estado);
+    e.preventDefault()
+    const splited = data.split('-');
+    const newData = splited[2] + "/" + splited[1] + "/" + splited[0]
     fetchData();
   }
 
@@ -46,10 +47,11 @@ function Ocorridos() {
         <div>
           <label>Tipo</label> 
           <br></br>
-          <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
-              <option value="fisica">Física</option>
-              <option value="sexual">Sexual</option>
-              <option value="psicologica">Psicológica</option>
+          <select id="tipo" value={tipo} onChange={(e) => setTipo(e.target.value)}>
+              <option value=""></option>
+              <option value="Física">Física</option>
+              <option value="Sexual">Sexual</option>
+              <option value="Psicológica">Psicológica</option>
           </select>
         </div>
 
@@ -77,11 +79,12 @@ function Ocorridos() {
           <label>Raça</label>
           <br></br>
           <select value={raca} onChange={(e) => setRaca(e.target.value)}>
-              <option value="pardo">Pardo</option>
-              <option value="preto">Preto</option>
-              <option value="indigena">Indígena</option>
-              <option value="branco">Branco</option>
-              <option value="amarelo">Amarelo</option>
+              <option value=""></option>
+              <option value="Parda">Parda</option>
+              <option value="Preta">Preta</option>
+              <option value="Indígena">Indígena</option>
+              <option value="Branca">Branca</option>
+              <option value="Amarela">Amarela</option>
           </select>
         </div>
 
