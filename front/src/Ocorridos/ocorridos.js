@@ -5,9 +5,8 @@ import axios from 'axios';
 function Ocorridos() {
   const [ocorridos, setOcorridos] = useState([]);
 
-  const [descricao, setDescricao] = useState('');
   const [tipo, setTipo] = useState('');
-  const [cidade, setCidade] = useState('');
+  const [municipio, setMunicipio] = useState('');
   const [estado, setEstado] = useState('');
   const [data, setData] = useState('');
   const [idade, setIdade] = useState('');
@@ -15,23 +14,39 @@ function Ocorridos() {
   const [genero, setGenero] = useState('');
   const [sexualidade, setSexualidade] = useState('');
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/api/ocorridos')
-      .then(response => {
-        setOcorridos(response.data.data);
-      })
-      .catch(error => {
-        console.error('There was an error fetching the data!', error);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/api/procurar-ocorridos', {
+        params: { 
+          tipo: tipo || undefined,
+          municipio: municipio || undefined,
+          estado: estado,
+          data: data || undefined,
+          idade: idade || undefined,
+          raca: raca || undefined,
+          genero: genero || undefined,
+          sexualidade: sexualidade || undefined
+        }
       });
-  }, []);
+      setOcorridos(response.data.data);
+    } catch (error) {
+      console.error('There was an error fetching the data!', error);
+    }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(estado);
+    fetchData();
+  }
 
   return (
     <div className="Ocorridos">
-      <form onSubmit={useEffect}>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Tipo</label> 
           <br></br>
-          <select value={tipo} onChange={(e) => setDescricao(e.target.value)}>
+          <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
               <option value="fisica">Física</option>
               <option value="sexual">Sexual</option>
               <option value="psicologica">Psicológica</option>
@@ -39,8 +54,8 @@ function Ocorridos() {
         </div>
 
         <div>
-          <div>Cidade</div>
-          <input type="text" value={cidade} onChange={(e) => setCidade(e.target.value)} />
+          <div>Municipio</div>
+          <input type="text" value={municipio} onChange={(e) => setMunicipio(e.target.value)} />
         </div>
 
         <div>
@@ -85,7 +100,7 @@ function Ocorridos() {
       <h1>Resultados</h1>
       <ul>
         {ocorridos.map((item) => (
-          <li key={item.id}>{item.cidade}: {item.descricao}</li>
+          <li key={item.id}>{item.descricao}</li>
         ))}
       </ul>
     </div>

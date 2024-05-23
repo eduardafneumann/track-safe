@@ -1,4 +1,4 @@
-CREATE TABLE "ocorrido" (
+CREATE TABLE "ocorridos" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"descricao"	TEXT NOT NULL,
 	"tipo"	INTEGER NOT NULL,
