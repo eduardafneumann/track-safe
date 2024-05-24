@@ -1,111 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import './ocorridos.css'
+import Input from './input'
 
 
 function Ocorridos() {
-  const [ocorridos, setOcorridos] = useState([]);
+  const [resultados, setResultados] = useState([]);
+  const [queryData, setQueryData] = useState({
+    idade: '',
+    raca: '',
+    identidade_genero: '',
+    orientacao_sexual: '',
+    municipio: '',
+    estado: '',
+    tipo: ''
+  });
+  const [currentInput, setCurrentInput] = useState({
+    name: 'estado',
+    type: ''
+  });
 
-  const [tipo, setTipo] = useState('');
-  const [municipio, setMunicipio] = useState('');
-  const [estado, setEstado] = useState('');
-  const [data, setData] = useState('');
-  const [idade, setIdade] = useState('');
-  const [raca, setRaca] = useState('');
-  const [genero, setGenero] = useState('');
-  const [sexualidade, setSexualidade] = useState('');
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/api/ocorridos', {
-        params: { 
-          tipo: tipo || undefined,
-          municipio: municipio || undefined,
-          estado: estado || undefined,
-          data: data || undefined,
-          idade: idade || undefined,
-          raca: raca || undefined,
-          identidade_genero: genero || undefined,
-          orientacao_sexual: sexualidade || undefined
-        }
-      });
-      setOcorridos(response.data.data);
-    } catch (error) {
-      console.error('There was an error fetching the data!', error);
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log('input atual')
+    console.log(currentInput.name)
+    console.log('input sendo inputado')
+    console.log(name)
+    setQueryData({ ...queryData, [name]: value });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const splited = data.split('-');
-    const newData = splited[2] + "/" + splited[1] + "/" + splited[0]
-    fetchData();
+  const handleClick = ({name, type}) => {
+    /*document.getElementById(currentInput.name).value = ''*/
+    setCurrentInput({name:name, type:type})
   }
 
   return (
-    <div className="Ocorridos">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Tipo</label> 
-          <br></br>
-          <select id="tipo" value={tipo} onChange={(e) => setTipo(e.target.value)}>
-              <option value=""></option>
-              <option value="Física">Física</option>
-              <option value="Sexual">Sexual</option>
-              <option value="Psicológica">Psicológica</option>
-          </select>
-        </div>
+    <div className="ocorridos-body">
+      <button onClick={handleClick({name:'estado', type:'text'})}>Estado</button>
+      <button onClick={handleClick({name:'municipio', type:'text'})}>municipio</button>
 
-        <div>
-          <div>Municipio</div>
-          <input type="text" value={municipio} onChange={(e) => setMunicipio(e.target.value)} />
-        </div>
-
-        <div>
-          <div>Estado</div>
-          <input type="text" value={estado} onChange={(e) => setEstado(e.target.value)} />
-        </div>
-
-        <div>
-          <div>Data</div>
-          <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
-        </div>
-
-        <div>
-          <div>Idade</div>
-          <input type="number" value={idade} onChange={(e) => setIdade(e.target.value)} />
-        </div>
-
-        <div>
-          <label>Raça</label>
-          <br></br>
-          <select value={raca} onChange={(e) => setRaca(e.target.value)}>
-              <option value=""></option>
-              <option value="Parda">Parda</option>
-              <option value="Preta">Preta</option>
-              <option value="Indígena">Indígena</option>
-              <option value="Branca">Branca</option>
-              <option value="Amarela">Amarela</option>
-          </select>
-        </div>
-
-        <div>
-          <div>Identidade de Gênero</div>
-          <input type="text" value={genero} onChange={(e) => setGenero(e.target.value)} />
-        </div>
-
-        <div>
-          <div>Orientação Sexual</div>
-          <input type="text" value={sexualidade} onChange={(e) => setSexualidade(e.target.value)} />
-        </div>
-        <button type="submit">Pesquisar</button>
-      </form>
-
-      <h1>Resultados</h1>
-      <ul>
-        {ocorridos.map((item) => (
-          <li key={item.id}>{item.descricao}</li>
-        ))}
-      </ul>
+      <Input name={currentInput.name} type={currentInput.type} value={queryData['${currentInput.name}']} handleChange={handleChange} />
     </div>
   );
 }
