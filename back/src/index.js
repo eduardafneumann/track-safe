@@ -20,7 +20,7 @@ const db = new sqlite3.Database('./../base_de_dados/base.db', (err) => {
 app.get('/api/ocorridos', (req, res) => {
   const { tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero } = req.query;
   
-  console.log(orientacao_sexual);
+  console.log(tipo);
   
   let sql = 'SELECT * FROM ocorridos WHERE 1=1';
   let params = [];

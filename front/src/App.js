@@ -2,13 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './Home/Home';
-import Ocorridos from './Ocorridos/ocorridos';
-import NovoOcorrido from './NovoOcorrido/novo-ocorrido';
+import Home from './pages/Home/Home';
+import Ocorridos from './pages/Ocorridos/ocorridos';
+import NovoOcorrido from './pages/NovoOcorrido/novo-ocorrido';
+import Header from './pages/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
+      <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ocorridos" element={<Ocorridos />} />
