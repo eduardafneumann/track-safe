@@ -1,3 +1,75 @@
+.novo-ocorrido-body{
+    margin-top: 20vh;
+    margin-right: 20vw;
+    margin-left: 20vw;
+    margin-bottom: 10vh;
+}
+
+.introducao {
+    text-align: center;
+}
+
+.instrucao {
+    text-align: center;
+}
+
+.campos-area {
+    margin-top: 10vh;
+}
+
+.campo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.campo-titulo {
+    font-weight: 300;
+}
+
+.campo-input {
+    width: 100%;
+}
+
+.botao-area {
+    display: flex;
+    justify-content: space-around;
+}
+
+.botao {
+    margin: 5px;
+    background-color: black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 30px;
+}
+
+.descricao-titulo{
+    text-align: center;
+}
+
+.descricao-instrucao{
+    background-color: lightgrey;
+    border-radius: 30px;
+    padding: 20px 30px;
+    margin: 40px 0px;
+}
+
+.descricao-input {
+    height: 50vh;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
 .highlight {
     border: 2px solid red;
+}
+
+@media screen and (max-width: 700px){
+    .novo-ocorrido-body {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
 }

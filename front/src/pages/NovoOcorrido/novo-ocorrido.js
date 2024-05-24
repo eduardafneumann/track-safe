@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Introducao from './introducao';
 import InformacoesPessoais from './informacoes-pessoais';
 import InformacoesOcorrido from './informacoes-ocorrido';
 import Descricao from './descricao';
@@ -71,10 +72,12 @@ function NovoOcorrido() {
 
   switch (step) {
     case 1:
-      return <InformacoesPessoais formData={formData} handleChange={handleChange} nextStep={nextStep} />
+      return <Introducao nextStep={nextStep} />
     case 2:
-        return <InformacoesOcorrido formData={formData} handleChange={handleChange} nextStep={validadeForms} prevStep={prevStep}/>;
+      return <InformacoesPessoais formData={formData} handleChange={handleChange} prevStep={prevStep} nextStep={nextStep} />
     case 3:
+        return <InformacoesOcorrido formData={formData} handleChange={handleChange} nextStep={validadeForms} prevStep={prevStep}/>;
+    case 4:
       return <Descricao formData={formData} handleChange={handleChange} prevStep={prevStep} handleSubmit={handleSubmit} handleSharing={handleSharing}/>
     default:
       return null;

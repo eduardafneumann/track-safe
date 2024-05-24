@@ -1,4 +1,4 @@
-.home-body{
+.home-background{
     padding: 0;
     margin-top: 10vh;
     background-image: url('./../../images/background2.jpg');
@@ -7,41 +7,48 @@
     font-family:'Copperplate';
 }
 
+.scrollable {
+    overflow:auto;
+}
+
 .text-background {
     margin-top: 10vh;
     margin-bottom: 10vh;
-    height: 60vh;
+    height: auto;
     
     margin-left: 10vw;
-    width: 50%;
+    margin-right: 30vw;
     
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 7%;
+    padding-bottom: 7%;
 
     backdrop-filter: blur(20px);
     border-radius: 30px;
 }
 
-.site-name{
-    font-family: "Copperplate", fantasy;
-}
-
 .button-area {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
 }
+
 
 .button {
     margin: 5px;
-}
-
-.button {
     background-color: black;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     border-radius: 30px;
+}
+
+@media screen and (max-width: 700px){
+    .text-background {
+        margin-right: 10vw;
+    }
 }
