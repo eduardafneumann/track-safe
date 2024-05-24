@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import './ocorridos.css';
 
-function  Input({ name, type,  value, handleChange }) {  
+function  Input({ type, name, value, handleChange }) {  
   return (
-    <div className='input-area'>
-      <input className='input' id={name} name={name} type={type} value={value} onChange={handleChange} />
-    </div>
+    <input type={type} name={name} value={value} onChange={handleChange} />
   );
 }
 
