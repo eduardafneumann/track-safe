@@ -1,39 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ocorridos.css'
+import InputArea from './input-area';
+import SearchIcon from './../../images/search.png';
 
 
 function Ocorridos() {
   const [resultados, setResultados] = useState([]);
   const [queryData, setQueryData] = useState({
+    tipo: '',
     idade: '',
     raca: '',
     identidade_genero: '',
     orientacao_sexual: '',
     municipio: '',
     estado: '',
-    tipo: ''
+    data: ''
   });
-  const [currentInput, setCurrentInput] = useState({
-    name: 'estado',
-    type: ''
+  const [renderInputFields, setRenderInputFields] = useState({
+    tipo: false,
+    idade: false,
+    raca: false,
+    identidade_genero: false,
+    orientacao_sexual: false,
+    municipio: false,
+    estado: false,
+    data: false
   });
-  const [renderInput, setRenderInput] = useState({
-    estado: null
-  });
+  const [renderInput, setRenderInput] = useState(false);
+
   
   const fetchData = async () => {
+    console.log(queryData.tipo)
     try {
       const response = await axios.get('http://localhost:3001/api/ocorridos', {
         params: { 
           tipo: queryData.tipo || undefined,
-          municipio: queryData.municipio || undefined,
-          estado: queryData.estado || undefined,
-          data: queryData.data || undefined,
           idade: queryData.idade || undefined,
           raca: queryData.raca || undefined,
           identidade_genero: queryData.genero || undefined,
-          orientacao_sexual: queryData.sexualidade || undefined
+          orientacao_sexual: queryData.sexualidade || undefined,
+          municipio: queryData.municipio || undefined,
+          estado: queryData.estado || undefined,
+          data: queryData.data || undefined,
         }
       });
       setResultados(response.data.data);
@@ -51,79 +60,62 @@ function Ocorridos() {
     setQueryData({ ...queryData, [e.target.name]: e.target.value });
   }
 
+  const handleClick = campo => {
+    const newDictionary = Object.keys(renderInputFields).reduce((acc, key) => {
+      acc[key] = false;
+      return acc;
+    }, {});
+    setRenderInput(!renderInputFields[campo])
+    setRenderInputFields({ ...newDictionary, [campo]: !renderInputFields[campo] })
+  }
+
   return (
     <div className="ocorridos-body">
-      <form onSubmit={handleSubmit}>
 
-        <div>
-          <div>Tipo</div> 
-
-          <select id="tipo" value={queryData.tipo} onChange={handleChange}>
-              <option value=""></option>
-              <option value="Física">Física</option>
-              <option value="Sexual">Sexual</option>
-              <option value="Psicológica">Psicológica</option>
-          </select>
+      <div className='search-area'>
+        <div className='button-area'>
+          <button className='botao' onClick={() => handleClick('tipo')}>Tipo</button>
+          <div className='button-area-space'></div>
+          <button className='botao' onClick={() => handleClick('idade')}>Idade</button>
+          <div className='button-area-space'></div>
+          <button className='botao' onClick={() => handleClick('raca')}>Raça</button>
+          <div className='button-area-space'></div>
+          <button className='botao' onClick={() => handleClick('identidade_genero')}>Identidade de Gênero</button>
         </div>
 
-        <div>
-          <div>Municipio</div>
+        { renderInput ? <InputArea renderInputFields={renderInputFields} queryData={queryData} handleChange={handleChange}/> : null }
 
-          <input type="text" value={queryData.municipio} onChange={handleChange} />
+        <div className='button-area'>
+          <button className='botao' onClick={() => handleClick('orientacao_sexual')}>Orientação Sexual</button>
+          <div className='button-area-space'></div>
+          <button className='botao' onClick={() => handleClick('municipio')}>Municipio</button>
+          <div className='button-area-space'></div>
+          <button className='botao' onClick={() => handleClick('estado')}>Estado</button>
+          <div className='button-area-space'></div>
+          <button className='botao' onClick={() => handleClick('data')}>Data</button>
         </div>
 
-        <div>
-          <div>Estado</div>
+        <form onSubmit={handleSubmit}>
+          <div className='search-button-area'>
+              <button className='search-button' type="submit">
+                <img className='search-logo' src={SearchIcon} alt='search icon'></img>
+                Buscar
+              </button>
+          </div>
+        </form>
 
-          <input type="text" value={queryData.estado} onChange={handleChange} />
-        </div>
+      </div>
 
-        <div>
-          <div>Data</div>
-
-          <input type="date" value={queryData.data} onChange={handleChange} />
-        </div>
-
-        <div>
-          <div>Idade</div>
-
-          <input type="number" value={queryData.idade} onChange={handleChange} />
-        </div>
-
-        <div>
-          <div>Raça</div>
-
-          <select value={queryData.raca} onChange={handleChange}>
-              <option value=""></option>
-              <option value="Parda">Parda</option>
-              <option value="Preta">Preta</option>
-              <option value="Indígena">Indígena</option>
-              <option value="Branca">Branca</option>
-              <option value="Amarela">Amarela</option>
-          </select>
-        </div>
-
-        <div>
-          <div>Identidade de Gênero</div>
-
-          <input type="text" value={queryData.genero} onChange={handleChange} />
-        </div>
-
-        <div>
-          <div>Orientação Sexual</div>
-
-          <input type="text" value={queryData.sexualidade} onChange={handleChange} />
-        </div>
-        
-        <button type="submit">Pesquisar</button>
-      </form>
-
-      <h1>Resultados</h1>
-      <ul>
+      <div className='results-area'>
+        <h1 className='results-title'>Relatos</h1>
         {resultados.map((item) => (
-          <li key={item.id}>{item.descricao}</li>
+          <div className='result'>
+            <h2>Relato #{item.id}</h2>
+            {item.descricao}
+          </div>
         ))}
-      </ul>
+      </div>
+
     </div>
   );
 }
