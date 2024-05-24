@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Ocorridos from './pages/Ocorridos/ocorridos';
 import NovoOcorrido from './pages/NovoOcorrido/novo-ocorrido';
 import Header from './pages/Header/Header';
+import './App.css'
 
 function App() {
   return (
