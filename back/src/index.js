@@ -25,6 +25,8 @@ app.get('/api/ocorridos', (req, res) => {
   let sql = 'SELECT * FROM ocorridos WHERE 1=1';
   let params = [];
 
+  sql += ' AND descricao IS NOT ""';
+
   if (tipo) {
     sql += ' AND tipo = ?';
     params.push(tipo);
