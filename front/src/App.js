@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Ocorridos from './pages/Ocorridos/ocorridos';
 import NovoOcorrido from './pages/NovoOcorrido/novo-ocorrido';
 import Header from './pages/Header/Header';
+import Informacoes from './pages/Informacoes/informacoes'
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ocorridos" element={<Ocorridos />} />
         <Route path="/novo-ocorrido" element={<NovoOcorrido />} />
+        <Route path="/informacoes" element={<Informacoes />} />
       </Routes>
     </BrowserRouter>
   );
