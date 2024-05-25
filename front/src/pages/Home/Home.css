@@ -1,54 +1,53 @@
-.home-background{
-    padding: 0;
-    margin-top: 10vh;
-    background-image: url('./../../images/background2.jpg');
-    height: 90vh;
-    display: flex;
-    font-family:'Copperplate';
+.home-background {
+  padding: 0;
+  margin-top: 10vh;
+  background-image: url("./../../images/background2.jpg");
+  height: 90vh;
+  display: flex;
+  font-family: "Copperplate";
 }
 
 .scrollable {
-    overflow:auto;
+  overflow: auto;
 }
 
 .text-background {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    height: auto;
-    
-    margin-left: 10vw;
-    margin-right: 30vw;
-    
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 7%;
-    padding-bottom: 7%;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  height: auto;
 
-    backdrop-filter: blur(20px);
-    border-radius: 30px;
+  margin-left: 10vw;
+  margin-right: 30vw;
+
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 7%;
+  padding-bottom: 7%;
+
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
 }
 
 .button-area {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
 }
-
 
 .button {
-    margin: 5px;
-    background-color: black;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 30px;
+  margin: 5px;
+  background-color: black;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 30px;
 }
 
-@media screen and (max-width: 700px){
-    .text-background {
-        margin-right: 10vw;
-    }
+@media screen and (max-width: 700px) {
+  .text-background {
+    margin-right: 10vw;
+  }
 }

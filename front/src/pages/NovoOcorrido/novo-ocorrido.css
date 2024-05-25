@@ -1,76 +1,86 @@
-.novo-ocorrido-body{
-    margin-top: 20vh;
-    margin-right: 20vw;
-    margin-left: 20vw;
-    margin-bottom: 10vh;
+.novo-ocorrido-body {
+  margin-top: 20vh;
+  margin-right: 20vw;
+  margin-left: 20vw;
+  margin-bottom: 10vh;
 }
 
-.introducao {
-    text-align: center;
+
+
+.novo-ocorrido-introduction {
+  text-align: center;
 }
 
-.instrucao {
-    text-align: center;
+.novo-ocorrido-instruction {
+  text-align: center;
 }
 
-.campos-area {
-    margin-top: 10vh;
+
+
+.novo-ocorrido-button-area {
+  display: flex;
+  justify-content: space-around;
 }
 
-.campo {
-    margin-top: 30px;
-    margin-bottom: 30px;
+.novo-ocorrido-button {
+  margin: 5px;
+  background-color: black;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-.campo-titulo {
-    font-weight: 300;
+
+
+.novo-ocorrido-fields-area {
+  margin-top: 10vh;
 }
 
-.campo-input {
-    width: 100%;
+.novo-ocorrido-field {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.botao-area {
-    display: flex;
-    justify-content: space-around;
+.novo-ocorrido-field-title {
+  font-weight: 300;
 }
 
-.botao {
-    margin: 5px;
-    background-color: black;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 30px;
-    cursor: pointer; 
+.novo-ocorrido-field-input {
+  width: 100%;
 }
 
-.descricao-titulo{
-    text-align: center;
+
+
+.novo-ocorrido-description-title{
+  text-align: center;
 }
 
-.descricao-instrucao{
-    background-color: lightgrey;
-    border-radius: 30px;
-    padding: 20px 30px;
-    margin: 40px 0px;
+.novo-ocorrido-description-instruction {
+  background-color: lightgrey;
+  border-radius: 30px;
+  padding: 20px 30px;
+  margin: 40px 0px;
 }
 
-.descricao-input {
-    height: 50vh;
-    width: 100%;
-    margin-bottom: 40px;
+.novo-ocorrido-description-input {
+  height: 50vh;
+  width: 100%;
+  margin-bottom: 40px;
 }
+
+
 
 .highlight {
-    border: 2px solid red;
+  border: 2px solid red;
 }
 
-@media screen and (max-width: 700px){
-    .novo-ocorrido-body {
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
+@media screen and (max-width: 700px) {
+  .novo-ocorrido-body {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
 }

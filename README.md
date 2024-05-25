@@ -43,3 +43,10 @@ Existem duas rotas: GET em '/api/ocorridos', que recebe como parâmetro da requi
 ### Mock data
 
 Foram elaborados 11 entradas simuladas no banco da dados. Essas podem ser encontradas na pasta 'documentos'.
+
+## Melhorias
+
+As melhorias que podem ser feitas ao projeto registradas até o momento:
+
+- Busca é realizada ao inserir '\n' em um dos campos de texto do input, no momento o botão de busca deve ser clicado;
+- Fechar o campo de input quando a busca é realizada;

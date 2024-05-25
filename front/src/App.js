@@ -1,13 +1,13 @@
-// App.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import "./App.css";
+
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/Home/Home';
-import Ocorridos from './pages/Ocorridos/ocorridos';
-import NovoOcorrido from './pages/NovoOcorrido/novo-ocorrido';
-import Header from './pages/Header/Header';
-import Informacoes from './pages/Informacoes/informacoes'
-import './App.css'
+
+import Header from "./pages/Header/Header";
+import Home from "./pages/Home/Home";
+import Ocorridos from "./pages/Ocorridos/ocorridos";
+import NovoOcorrido from "./pages/NovoOcorrido/novo-ocorrido";
+import Informacoes from "./pages/Informacoes/informacoes";
 
 function App() {
   return (

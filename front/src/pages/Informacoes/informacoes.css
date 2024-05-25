@@ -1,49 +1,48 @@
-.informacoes-body{
-    margin-top: 10vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
+.informacoes-body {
+  margin-top: 10vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 .informacoes-title {
-    margin-top: 20vh;
-    text-align: center;
+  margin-top: 20vh;
+  text-align: center;
 }
 
 .informacoes-subtitle {
-    font-weight: 400;
-    text-align: center;
-    margin: 30px 0;
+  font-weight: 400;
+  text-align: center;
+  margin: 30px 0;
 }
 
 .informacoes-paragraph {
-    text-align: center;
+  text-align: center;
 }
 
-.nome-canal{
-    text-align: right;
-    border-right: 1px solid black;
-    padding-right: 10px;
+.channels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-.endereco-canal {
-    padding-left: 10px;
-    
+.channels-table {
+  align-self: center;
+  border-collapse: collapse;
 }
 
-.canais-tabela td {
-    padding-bottom: 10px;
-    width: 30vw;
-    
+.channel-name {
+  text-align: right;
+  border-right: 1px solid black;
+  padding-right: 10px;
+  max-width: 20vw;
+  padding-bottom: 15px;
 }
 
-.canais-tabela {
-    align-self: center;
-    border-collapse: collapse;
+.channel-adress {
+  padding-left: 10px;
+  max-width: 20vw;
+  padding-bottom: 15px;
 }
 
-.canais {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-}
+
