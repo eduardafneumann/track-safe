@@ -1,13 +1,13 @@
 CREATE TABLE "ocorridos" (
 	"id"	INTEGER NOT NULL UNIQUE,
-	"tipo"	TEXT NOT NULL,
-	"municipio"	TEXT NOT NULL,
-	"estado"	TEXT NOT NULL,
-	"data"	TEXT NOT NULL,
 	"idade"	INTEGER,
 	"raca"	TEXT,
-	"orientacao_sexual"	TEXT,
 	"identidade_genero"	TEXT,
+	"orientacao_sexual"	TEXT,
+	"tipo"	TEXT NOT NULL CHECK ( tipo IN ('Física', 'Psicológica', 'Sexual') ),
+	"municipio"	TEXT NOT NULL,
+	"estado"	TEXT NOT NULL CHECK ( estado IN ('AC','AL','AP','AM','BA','CE','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO','DF') ),
+	"data"	TEXT NOT NULL,
 	"descricao"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
-)
+);

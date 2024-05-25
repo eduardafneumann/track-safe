@@ -1,71 +1,45 @@
-# Tema
+# Track Safe
 
-#### Soluções para combate à violência de gênero
+Projeto desenvolvido durante o Hackathon Women in Tech, com tema combate à violência de gênero. Na plataforma Track Safe, usuárias anônimas podem relatar casos de violência de gênero que sofreram, além de serem direcionadas aos canais oficiais de denúncia, caso se sintam confortáveis. Desse modo, buscamos construir uma base de dados para auxiliar no problema de subnotificação de violências de gênero. Por fim, as usuárias podem buscar relatos de vítimas que passaram por situações semelhantes, criando uma rede de apoio.
 
-A nossa hackathon é uma iniciativa crucial para enfrentar um problema que afeta milhões de mulheres em todo o mundo. De acordo com dados recentes, **85% das mulheres já sofreram algum tipo de violência no ambiente doméstico ou em relacionamentos íntimos**. Além disso, **1 em cada 3 mulheres foi vítima de violência física, sexual ou psicológica**. Esses números alarmantes nos motivam a criar soluções inovadoras que utilizem a tecnologia como ferramenta para proteger e empoderar as mulheres. Durante a hackathon, queremos incentivar o desenvolvimento de tecnologias que ofereçam suporte, informação e recursos para as vítimas, além de promover a conscientização e a mudança social. Juntos, podemos fazer a diferença e construir um mundo mais seguro e igualitário para todas as mulheres.
+O projeto foi desenvolvido com os frameworks Node.js, React, Express.js e com o SGBD SQLite.
 
-# Desenvolvimento do projeto
+## Front-end
 
-Projeto Track Safe
+### Prototipagem em Figma
 
-O público alvo do nosso projeto são mulheres adultas e adolescentes como um todo.  
+A prototipagem pode ser encontrada [aqui](https://www.figma.com/design/jTDlhrXqCe70yfmMfpCW8k/Prot%C3%B3tipoTrackSafe?node-id=0%3A1&t=MtpVVxI7hjwADaPb-1).
 
-Optamos pela escolha de desenvolver um site devido a possibilidade de atingir pessoas em qualquer forma de dispositivo, desde computadores desktop até smartphones ou tablets.
+### Páginas
 
-Em nosso site usuárias anônimas podem inserir denúncias de casos de violência de gênero de forma a alimentar um banco de dados para resolver problemas de subnotificação de relatos oficiais como boletins de ocorrência (B.O.'s), que são usados comumente em análises e afins para a elaboração de políticas públicas costumam ser processos demorados e muitas vezes trabalhoso, levando a vitima a muitas vezes não querer realizar a denúncia formalmente e/ou pode ser desencorajada de levar a denúncia adiante. Queremos incentivar que esses relatos aconteçam, por mais que de uma forma extraoficial, para dar voz às nossas irmãs, e esperamos que os dados obtidos possam ser usados para ter uma noção mais acurada da violência de gênero no Brasil, eventualmente podendo levar à elaboração de políticas públicas que visem amenizar esse tipo de crime de ódio.
+O site possui 4 telas: a página inicial, de onde o usuário pode acessar as outras 3; a página para relatar o ocorrido, onde preenche um formulário; a página de bucar relatos, onde o usuário pode buscar descrições de violência de gênero; e a página de informações, onde o usuário é direcionado aos canais de denúncia oficiais.
 
-Queremos ainda incentivar que as usuárias do nosso sistema interajam entre si, já que compreendemos a importância do diálogo e da formação de redes de apoio, então trabalhamos na funcionalidade de adicionar comentários a denúncias.
 
-#### Funcionalidades:
+## Back-end
 
-- Adicionar e acessar denúncias e comentários 
-- Busca e filtro de denúncias
-- Comentários em denúncias
-- Dashboard de dados
+### Modelagem da base de dados
 
-#### Prototipagem em Figma
-
-- Um rascunho de como pensamos o website pode ser acessado [aqui](https://www.figma.com/design/jTDlhrXqCe70yfmMfpCW8k/Prot%C3%B3tipoTrackSafe?node-id=0%3A1&t=MtpVVxI7hjwADaPb-1).
-
-#### Modelagem da base de dados:
-
-Usando SQLite, modelamos as ocorrências da seguinte forma:
+A base de dados possui uma única tabela, de ocorridos.
 
 ```SQLite
 CREATE TABLE "ocorrido" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"descricao"	TEXT NOT NULL,
-	"tipo"	INTEGER NOT NULL,
-	"municipio"	TEXT NOT NULL,
-	"estado"	TEXT NOT NULL,
-	"data"	TEXT NOT NULL,
+	"id"	SERIAL PRIMARY KEY,
 	"idade"	INTEGER,
 	"raca"	TEXT,
-	"orientacao_sexual"	TEXT,
 	"identidade_genero"	TEXT,
-	PRIMARY KEY("id" AUTOINCREMENT)
+	"orientacao_sexual"	TEXT,
+	"tipo"	TEXT NOT NULL CHECK ( tipo IN ('Física', 'Psicológica', 'Sexual') ),
+	"municipio"	TEXT NOT NULL,
+	"estado"	TEXT NOT NULL CHECK ( estado IN ('AC','AL','AP','AM','BA','CE','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO','DF') ),
+	"data"	TEXT NOT NULL,
+	"descricao"	TEXT,
 )
 ```
 
-Um exemplo de inserção de dados seria da forma: `INSERT INTO ocorrido (descricao, tipo, municipio, estado, data, idade, raca, orientacao_sexual, identidade_genero) VALUES ("Sed scelerisque ante dui, ", 0, 'São Carlos', 'SP', '1/05/24', 4, 'Amarela', 'Assexual', NULL);`.
+### Rotas
 
-Um mockup de como esperávamos os dados (exportado em .csv):
+Existem duas rotas: GET em '/api/ocorridos', que recebe como parâmetro da requisição tipo, município, estado, data, idade, raça, orientacao sexual e/ou identidade gênero e retorna os ocorridos que correspondem a essa query e que não tenham o campo da descricao vazio; e POST em '/api/ocorridos', que recebe na requisição todos os campos da tabela ocorridos e faz uma inserção na tabela.
 
-```
-id,descricao,tipo,municipio,estado,data,idade,raca,orientacao_sexual,identidade_genero
-1,"Sed scelerisque ante dui, ",0,São Carlos,SP,1/05/24,4,Amarela,Assexual,
-2,"Pellentesque habitant morbi tristique",1,São Paulo,SP,3/04/24,6,Preta,Lésbica,Travesti
-3,"Vivamus gravida ipsum ut metus",0,Itaguaí,RJ,2/04/24,,,,
-4,"Nulla in elit nec eros mattis elementum.",2,São Carlos,SP,1/04/24,5,Parda,Heterossexual,
-5,"Sed vulputate sed diam vitae tincidunt.",1,Japeri,RJ,1/05/24,3,Branca,Questionando,Gênero-flúido
-6,"Suspendisse auctor elit id lectus aliquam",2,Belford Roxo,RJ,4/04/24,7,Indígena,,
-7,"Sed maximus ligula nec ultricies bibendum.",2,São Carlos,SP,2/03/24,,,,
-8,"Cras a commodo odio. Sed at quam eros.",0,Toledo,PR,3/12/23,4,Parda,Homossexual,
-9,"Cras maximus tortor feugiat",1,Americana,SP,2/12/23,5,Branca,,
-10,"Pellentesque malesuada gravida mattis.",2,Campinas,SP,4/11/23,4,Branca,Bissexual,Mulher
-11,"Phasellus aliquam lorem nulla",0,Curaçá,BA,5/03/24,,,,
-```
+### Mock data
 
-#### Conclusão
-
-O que pode ser elaborado da demo do website em tempo pode ser acessada no repositório presente.
+Foram elaborados 11 entradas simuladas no banco da dados. Essas podem ser encontradas na pasta 'documentos'.
