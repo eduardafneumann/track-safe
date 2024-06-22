@@ -1,25 +1,29 @@
 # Track Safe
 
-Projeto desenvolvido durante o Hackathon Women in Tech, com tema combate à violência de gênero. Na plataforma Track Safe, usuárias anônimas podem relatar casos de violência de gênero que sofreram, além de serem direcionadas aos canais oficiais de denúncia, caso se sintam confortáveis. Desse modo, buscamos construir uma base de dados para auxiliar no problema de subnotificação de violências de gênero. Por fim, as usuárias podem buscar relatos de vítimas que passaram por situações semelhantes, criando uma rede de apoio.
+Project developed during the Women in Tech hackathon, focused on combating gender-based violence. On the Track Safe platform, anonymous users can report instances of gender-based violence they have experienced, and if they feel comfortable, they are directed to official reporting channels. Additionally, users can search for accounts from victims who have gone through similar situations, creating a support network.
 
-O projeto foi desenvolvido com os frameworks Node.js, React, Express.js e com o SGBD SQLite.
+The project was developed using the Node.js, React and Express.js frameworks, and the SQLite database management system.
 
 ## Front-end
 
-### Prototipagem em Figma
+### Prototyping in Figma
 
-A prototipagem pode ser encontrada [aqui](https://www.figma.com/design/jTDlhrXqCe70yfmMfpCW8k/Prot%C3%B3tipoTrackSafe?node-id=0%3A1&t=MtpVVxI7hjwADaPb-1).
+The prototype can be found [here](https://www.figma.com/design/jTDlhrXqCe70yfmMfpCW8k/Prot%C3%B3tipoTrackSafe?node-id=0%3A1&t=MtpVVxI7hjwADaPb-1).
 
-### Páginas
+### Pages
 
-O site possui 4 telas: a página inicial, de onde o usuário pode acessar as outras 3; a página para relatar o ocorrido, onde preenche um formulário; a página de bucar relatos, onde o usuário pode buscar descrições de violência de gênero; e a página de informações, onde o usuário é direcionado aos canais de denúncia oficiais.
+The site has 4 screens: 
 
+- home page, from which users can access the other pages; 
+- reporting page, where users fill out a form to report an incident; 
+- search page, where users can look for descriptions of gender-based violence; 
+- information page, where users are directed to official reporting channels.
 
 ## Back-end
 
-### Modelagem da base de dados
+### Database Modeling
 
-A base de dados possui uma única tabela, de ocorridos.
+The database has a single table for incidents.
 
 ```SQLite
 CREATE TABLE "ocorrido" (
@@ -36,17 +40,17 @@ CREATE TABLE "ocorrido" (
 )
 ```
 
-### Rotas
+### Routes
 
-Existem duas rotas: GET em '/api/ocorridos', que recebe como parâmetro da requisição tipo, município, estado, data, idade, raça, orientacao sexual e/ou identidade gênero e retorna os ocorridos que correspondem a essa query e que não tenham o campo da descricao vazio; e POST em '/api/ocorridos', que recebe na requisição todos os campos da tabela ocorridos e faz uma inserção na tabela.
+There are two routes: GET on '/api/ocorridos', which receives as request parameters type, city, state, date, age, race, sexual orientation and gender identity, and returns the incidents that match the query and have a non-empty description field; and POST on '/api/ocorridos', which receives all fields of the incidents table in the request and inserts a new record into the table.
 
 ### Mock data
 
-Foram elaborados 11 entradas simuladas no banco da dados. Essas podem ser encontradas na pasta 'documentos'.
+Eleven simulated entries were created in the database. These can be found in the 'documents' folder.
 
-## Melhorias
+## Improvements
 
-As melhorias que podem ser feitas ao projeto registradas até o momento:
+Improvements that can be made to the project recorded so far:
 
-- Busca é realizada ao inserir '\n' em um dos campos de texto do input, no momento o botão de busca deve ser clicado;
-- Fechar o campo de input quando a busca é realizada;
+- Search is currently triggered by pressing '\n' in one of the text input fields; a search button should be implemented.
+- Close the input field when the search is performed.
