@@ -54,3 +54,14 @@ Improvements that can be made to the project recorded so far:
 
 - Search is currently triggered by pressing '\n' in one of the text input fields; a search button should be implemented.
 - Close the input field when the search is performed.
+
+## Screenshots
+
+![home](./screenshots/home.png)
+![search1](./screenshots/search1.png)
+![search2](./screenshots/search2.png)
+![submit1](./screenshots/submit1.png)
+![submit2](./screenshots/submit2.png)
+![submit3](./screenshots/submit3.png)
+![submit4](./screenshots/submit4.png)
+![submit5](./screenshots/submit5.png)
